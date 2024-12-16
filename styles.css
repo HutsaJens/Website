@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #204625; /* Army green */
+}
+
+.logo {
+    max-width: 80%; /* Increased from 300px */
+    width: 100%;
+    margin-top: 50px;
+}
+
+.welcome-text {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #ffffff; /* Changed to white for better contrast */
+}
