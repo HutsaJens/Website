@@ -115,6 +115,52 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Eduward Easter Egg functionality
+let eduwardSequence = [];
+const eduwardCode = ["e", "d", "u", "w", "a", "r", "d"];
+
+document.addEventListener("keydown", function (e) {
+  eduwardSequence.push(e.key.toLowerCase());
+
+  // Keep only the last 7 characters
+  if (eduwardSequence.length > 7) {
+    eduwardSequence.shift();
+  }
+
+  // Check if the sequence matches "eduward"
+  if (eduwardSequence.join("") === eduwardCode.join("")) {
+    showEduwardEasterEgg();
+    eduwardSequence = []; // Reset sequence
+  }
+});
+
+function showEduwardEasterEgg() {
+  const easterEgg = document.getElementById("eduward-easter-egg");
+  const closeButton = document.querySelector(".eduward-close");
+  const backdrop = document.querySelector(".eduward-backdrop");
+
+  if (easterEgg) {
+    easterEgg.style.display = "flex";
+
+    // Close easter egg when clicking close button
+    closeButton.addEventListener("click", function () {
+      easterEgg.style.display = "none";
+    });
+
+    // Close easter egg when clicking backdrop
+    backdrop.addEventListener("click", function () {
+      easterEgg.style.display = "none";
+    });
+
+    // Close easter egg with Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && easterEgg.style.display === "flex") {
+        easterEgg.style.display = "none";
+      }
+    });
+  }
+}
+
 // Add some interactive particles effect to hero section
 function createParticles() {
   const hero = document.querySelector(".hero");
