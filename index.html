@@ -16,32 +16,193 @@
     ></script>
   </head>
   <body>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img
-        src="assets/logo_transparant-wit.svg"
-        alt="Company Logo"
-        class="logo"
-      />
-    </a>
-    <div class="social-icons">
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
-        ><i class="fab fa-facebook"></i
-      ></a>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
-        ><i class="fab fa-twitter"></i
-      ></a>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
-        ><i class="fab fa-instagram"></i
-      ></a>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-    </div>
-    <a href="snake.html" class="snake-button">Play Snake Game</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/logo_transparant-wit.svg"
+            alt="BertenX Logo"
+            class="logo-nav"
+          />
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a href="snake.html" class="nav-link snake-nav">Snake Game</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <img
+          src="assets/logo_transparant-wit.svg"
+          alt="BertenX Logo"
+          class="hero-logo"
+        />
+        <h1 class="hero-title">Welcome to BertenX</h1>
+        <p class="hero-subtitle">Creative Developer & Digital Innovator</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="snake.html" class="btn btn-secondary">Play Snake Game</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm a passionate developer focused on creating innovative digital
+              solutions and engaging user experiences. With a strong foundation
+              in web technologies and a creative approach to problem-solving, I
+              bring ideas to life through code.
+            </p>
+            <div class="skills">
+              <h3>Skills & Technologies</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">Angular</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">.Net</span>
+                <span class="skill-tag">Picobello oplossingen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <i class="fas fa-gamepad project-icon"></i>
+            </div>
+            <div class="project-content">
+              <h3>Snake Game</h3>
+              <p>
+                A classic snake game built with vanilla JavaScript and HTML5
+                Canvas. Features smooth gameplay and score tracking.
+              </p>
+              <div class="project-links">
+                <a href="snake.html" class="project-link">Play Game</a>
+                <a href="#" class="project-link">View Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <i class="fas fa-globe project-icon"></i>
+            </div>
+            <div class="project-content">
+              <h3>Portfolio Website</h3>
+              <p>
+                A responsive portfolio website showcasing projects and skills
+                with modern design and smooth animations.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Live Demo</a>
+                <a href="#" class="project-link">View Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <i class="fas fa-code project-icon"></i>
+            </div>
+            <div class="project-content">
+              <h3>Web Applications</h3>
+              <p>
+                Various web applications built with modern frameworks and
+                technologies, focusing on user experience and performance.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Explore</a>
+                <a href="#" class="project-link">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <p class="contact-text">
+            Interested in working together or have a project in mind? Let's
+            connect!
+          </p>
+          <div class="social-icons">
+            <a
+              href="https://github.com/HutsaJens"
+              target="_blank"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+          <a href="mailto:contact@bertenx.com" class="btn btn-primary"
+            >Send Email</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 BertenX. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Hidden SVG for preloading -->
     <img
       src="assets/logo_transparant-groen.svg"
       alt="Hidden SVG"
       style="display: none"
     />
+
+    <script src="script.js"></script>
   </body>
 </html>
