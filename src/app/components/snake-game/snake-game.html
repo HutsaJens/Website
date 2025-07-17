@@ -1,0 +1,42 @@
+<!-- Snake Game -->
+<div class="min-h-screen bg-dark-400 pt-20 pb-10">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">Snake Game</h1>
+    <div class="bg-dark-200/50 border border-primary-500/20 rounded-xl p-8 inline-block">
+      <div class="mb-4">
+        <span class="text-white text-xl">Score: </span>
+        <span class="text-primary-400 text-xl font-bold">{{score}}</span>
+      </div>
+      <canvas 
+        #gameCanvas
+        width="400" 
+        height="400" 
+        class="border-2 border-primary-500/30 bg-dark-500 rounded-lg mb-4"
+      ></canvas>
+      <div class="flex gap-4 justify-center">
+        <button 
+          (click)="startGame()" 
+          [disabled]="gameRunning"
+          class="px-6 py-3 bg-primary-600 hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors"
+        >
+          {{gameRunning ? 'Game Running' : 'Start Game'}}
+        </button>
+        <button 
+          (click)="resetGame()" 
+          class="px-6 py-3 border border-primary-500 text-primary-300 hover:bg-primary-600/20 rounded-lg transition-colors"
+        >
+          Reset
+        </button>
+        <a 
+          routerLink="/" 
+          class="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors"
+        >
+          Back to Home
+        </a>
+      </div>
+      <div class="mt-4 text-gray-400 text-sm">
+        Use arrow keys to control the snake
+      </div>
+    </div>
+  </div>
+</div>

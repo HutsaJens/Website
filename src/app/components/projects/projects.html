@@ -1,0 +1,36 @@
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-dark-400">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-16">Featured Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let project of projects" 
+           class="bg-dark-200/50 border border-primary-500/20 rounded-xl p-6 hover:border-primary-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+        <div class="text-center mb-6">
+          <i [class]="project.icon + ' text-4xl text-primary-400 mb-4'"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-white mb-3">{{project.title}}</h3>
+          <p class="text-gray-300 mb-6 leading-relaxed">{{project.description}}</p>
+          <div class="flex gap-3">
+            <a 
+              [href]="project.demoLink" 
+              [class.cursor-pointer]="project.demoLink !== '#'"
+              [class.opacity-50]="project.demoLink === '#'"
+              class="flex-1 text-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors text-sm font-medium"
+            >
+              {{project.demoText}}
+            </a>
+            <a 
+              [href]="project.codeLink" 
+              [class.cursor-pointer]="project.codeLink !== '#'"
+              [class.opacity-50]="project.codeLink === '#'"
+              class="flex-1 text-center px-4 py-2 border border-primary-500 text-primary-300 hover:bg-primary-600/20 rounded-lg transition-colors text-sm font-medium"
+            >
+              {{project.codeText}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

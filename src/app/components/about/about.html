@@ -1,0 +1,25 @@
+<!-- About Section -->
+<section id="about" class="py-20 bg-dark-300">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-16">About Me</h2>
+    <div class="grid md:grid-cols-1 gap-12 items-center">
+      <div class="text-center">
+        <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-4xl mx-auto">
+          I'm a passionate developer focused on creating innovative digital
+          solutions and engaging user experiences. With a strong foundation
+          in web technologies and a creative approach to problem-solving, I
+          bring ideas to life through code.
+        </p>
+        <div>
+          <h3 class="text-2xl font-semibold text-white mb-6">Skills & Technologies</h3>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <span *ngFor="let skill of skills" 
+                  class="px-4 py-2 bg-primary-600/20 text-primary-300 rounded-full border border-primary-500/30 text-sm font-medium hover:bg-primary-600/30 transition-colors">
+              {{skill}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

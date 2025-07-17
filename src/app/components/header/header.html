@@ -1,0 +1,71 @@
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-primary-700/95 backdrop-blur-md z-50 py-4 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-5 flex justify-between items-center">
+    <div class="nav-logo">
+      <img
+        src="assets/logo_transparant-wit.svg"
+        alt="BertenX Logo"
+        class="h-10 filter invert brightness-125"
+      />
+    </div>
+    <ul class="hidden md:flex space-x-8">
+      <li><a href="#home" class="text-white hover:text-primary-200 transition-colors">Home</a></li>
+      <li><a href="#about" class="text-white hover:text-primary-200 transition-colors">About</a></li>
+      <li><a href="#projects" class="text-white hover:text-primary-200 transition-colors">Projects</a></li>
+      <li><a href="#contact" class="text-white hover:text-primary-200 transition-colors">Contact</a></li>
+      <li>
+        <a 
+          (click)="navigateToSnake()" 
+          class="text-green-400 hover:text-green-300 transition-colors cursor-pointer font-semibold"
+        >
+          Snake Game
+        </a>
+      </li>
+    </ul>
+    <div 
+      class="md:hidden flex flex-col cursor-pointer space-y-1"
+      (click)="toggleMobileMenu()"
+    >
+      <span 
+        class="w-6 h-0.5 bg-white transition-all duration-300 transform" 
+        [class.rotate-45]="isMobileMenuOpen" 
+        [class.translate-y-2]="isMobileMenuOpen"
+      ></span>
+      <span 
+        class="w-6 h-0.5 bg-white transition-all duration-300" 
+        [class.opacity-0]="isMobileMenuOpen"
+      ></span>
+      <span 
+        class="w-6 h-0.5 bg-white transition-all duration-300 transform" 
+        [class.-rotate-45]="isMobileMenuOpen" 
+        [class.-translate-y-2]="isMobileMenuOpen"
+      ></span>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div 
+    class="md:hidden absolute top-full left-0 w-full bg-primary-700/98 backdrop-blur-md transition-all duration-300 transform"
+    [class.opacity-0]="!isMobileMenuOpen"
+    [class.invisible]="!isMobileMenuOpen"
+    [class.opacity-100]="isMobileMenuOpen"
+    [class.visible]="isMobileMenuOpen"
+    [class.translate-y-[-10px]]="!isMobileMenuOpen"
+    [class.translate-y-0]="isMobileMenuOpen"
+  >
+    <ul class="flex flex-col space-y-4 p-6">
+      <li><a href="#home" class="text-white hover:text-primary-200 transition-colors block" (click)="closeMobileMenu()">Home</a></li>
+      <li><a href="#about" class="text-white hover:text-primary-200 transition-colors block" (click)="closeMobileMenu()">About</a></li>
+      <li><a href="#projects" class="text-white hover:text-primary-200 transition-colors block" (click)="closeMobileMenu()">Projects</a></li>
+      <li><a href="#contact" class="text-white hover:text-primary-200 transition-colors block" (click)="closeMobileMenu()">Contact</a></li>
+      <li>
+        <a 
+          (click)="navigateToSnake(); closeMobileMenu()" 
+          class="text-green-400 hover:text-green-300 transition-colors cursor-pointer font-semibold block"
+        >
+          Snake Game
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
