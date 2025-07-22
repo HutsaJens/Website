@@ -106,7 +106,7 @@ The website contains hidden features for visitors to discover:
 ## 📧 Contact
 
 - **GitHub**: [HutsaJens](https://github.com/HutsaJens)
-- **Email**: contact@bertenx.com
+- **Email**: contact@bertenx.nl
 - **Social Media**: Links available on the website
 
 ## 🤝 Contributing
