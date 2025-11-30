@@ -1,187 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BertenX</title>
-    
-    <!-- DNS Prefetch & Preconnect for external resources -->
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    
-    <!-- Preload critical resources -->
-    <link rel="modulepreload" href="/src/main.js" />
-    <link rel="preload" href="assets/logo_transparant-wit.svg" as="image" type="image/svg+xml" />
-    
-    <link rel="stylesheet" href="/src/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <img src="assets/logo_transparant-wit.svg" alt="BertenX Logo" class="logo-nav" />
-        </div>
-        <ul class="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-          <li>
-            <a href="snake.html" class="nav-link snake-nav">Snake Game</a>
-          </li>
-        </ul>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BertenX</title>
+
+  <!-- DNS Prefetch & Preconnect for external resources -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+  <!-- Preload critical resources -->
+  <link rel="modulepreload" href="/src/main.js" />
+  <link rel="preload" href="assets/logo_transparant-wit.svg" as="image" type="image/svg+xml" />
+
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Desktop Container -->
+  <div class="desktop">
+
+    <!-- Welcome Window -->
+    <div class="win95-window hero-window" style="top: 5%; left: 5%; z-index: 10;">
+      <div class="window-title-bar">
+        <div class="title-text">BertenX.exe</div>
+        <div class="title-controls">
+          <button class="win95-btn title-btn">X</button>
         </div>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <img src="assets/logo_transparant-wit.svg" alt="BertenX Logo" class="hero-logo" />
-        <h1 class="hero-title">Welcome to BertenX</h1>
-        <p class="hero-subtitle">Creative Developer & Digital Innovator</p>
+      <div class="window-content">
+        <img src="assets/logo_transparant-wit.svg" alt="BertenX Logo" class="hero-logo" style="filter: invert(0);" />
+        <h1 class="hero-title">System Status: ONLINE</h1>
+        <p class="hero-subtitle">Creative protocols engaged.</p>
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="snake.html" class="btn btn-secondary">Play Snake Game</a>
+          <a href="#projects" class="win95-btn">See Projects</a>
+          <a href="snake.html" class="win95-btn">Play Snake</a>
         </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              I'm a passionate developer focused on creating innovative digital solutions and engaging user experiences.
-              With a strong foundation in web technologies and a creative approach to problem-solving, I bring ideas to
-              life through code.
-            </p>
-            <div class="skills">
-              <h3>Skills & Technologies</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Typescript</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">Angular</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">C# (.NET)</span>
-                <span class="skill-tag">Picobello oplossingen</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-image">
-              <i class="fas fa-gamepad project-icon"></i>
-            </div>
-            <div class="project-content">
-              <h3>Snake Game</h3>
-              <p>
-                A classic snake game built with vanilla JavaScript and HTML5 Canvas. Features smooth gameplay and score
-                tracking.
-              </p>
-              <div class="project-links">
-                <a href="snake.html" class="project-link">Play Game</a>
-                <a href="#" class="project-link">View Code</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <i class="fas fa-globe project-icon"></i>
-            </div>
-            <div class="project-content">
-              <h3>Portfolio Website</h3>
-              <p>
-                A responsive portfolio website showcasing projects and skills with modern design and smooth animations.
-              </p>
-              <div class="project-links">
-                <a href="#" class="project-link">Live Demo</a>
-                <a href="#" class="project-link">View Code</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <i class="fas fa-code project-icon"></i>
-            </div>
-            <div class="project-content">
-              <h3>Web Applications</h3>
-              <p>
-                Various web applications built with modern frameworks and technologies, focusing on user experience and
-                performance.
-              </p>
-              <div class="project-links">
-                <a href="#" class="project-link">Explore</a>
-                <a href="#" class="project-link">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-          <p class="contact-text">Interested in working together or have a project in mind? Let's connect!</p>
-          <div class="social-icons">
-            <a href="https://github.com/HutsaJens" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Twitter"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-          <a href="mailto:contact@bertenx.nl" class="btn btn-primary">Send Email</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 BertenX. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <!-- Hidden SVG for preloading -->
-    <img src="assets/logo_transparant-groen.svg" alt="Hidden SVG" style="display: none" loading="lazy" />
-
-    <!-- Eduward Easter Egg -->
-    <div id="eduward-easter-egg" class="eduward-container" style="display: none">
-      <div class="eduward-backdrop"></div>
-      <div class="eduward-content">
-        <img src="assets/eduward.png" alt="Eduward!" class="eduward-image" loading="lazy" />
-        <h2 class="eduward-title">🎉 You found Eduward! 🎉</h2>
-        <p class="eduward-message">Congratulations! You discovered the secret Easter egg!</p>
-        <button class="eduward-close">Close</button>
       </div>
     </div>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <!-- About Window -->
+    <div id="about" class="win95-window about-window" style="top: 15%; right: 10%; z-index: 5;">
+      <div class="window-title-bar">
+        <div class="title-text">About_Me.txt</div>
+        <div class="title-controls">
+          <button class="win95-btn title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>
+          I'm Jens, a developer who loves creating for the web. I work with TypeScript, Angular, and .NET to build
+          reliable applications. This site is my digital playground.
+        </p>
+        <div class="skills">
+          <h3>Tech_Stack.dll</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Typescript</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">C# (.NET)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Window -->
+    <div id="projects" class="win95-window projects-window" style="top: 45%; left: 15%; z-index: 8;">
+      <div class="window-title-bar">
+        <div class="title-text">C:\Projects</div>
+        <div class="title-controls">
+          <button class="win95-btn title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-item">
+            <div class="project-icon"><img src="https://win98icons.alexmeub.com/icons/png/game_mine_1-0.png"
+                alt="Snake">
+            </div>
+            <div class="project-name">Snake_Game.exe</div>
+            <a href="snake.html" class="project-link-overlay"></a>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-item">
+            <div class="project-icon"><img
+                src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Portfolio"></div>
+            <div class="project-name">Portfolio.html</div>
+            <a href="#" class="project-link-overlay"></a>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-item">
+            <div class="project-icon"><img src="https://win98icons.alexmeub.com/icons/png/world-3.png" alt="Web Apps">
+            </div>
+            <div class="project-name">Web_Apps</div>
+            <a href="#" class="project-link-overlay"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Window -->
+    <div id="contact" class="win95-window contact-window" style="top: 60%; right: 20%; z-index: 6;">
+      <div class="window-title-bar">
+        <div class="title-text">Mail_Client</div>
+        <div class="title-controls">
+          <button class="win95-btn title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Got an idea? Let's build it.</p>
+        <div class="social-icons">
+          <a href="https://github.com/HutsaJens" target="_blank" class="win95-btn social-btn"><i
+              class="fab fa-github"></i></a>
+          <a href="#" class="win95-btn social-btn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <a href="mailto:contact@bertenx.nl" class="win95-btn">Send Email</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <button class="win95-btn start-btn">
+      <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt=""
+        style="height: 20px; margin-right: 5px;">
+      Start
+    </button>
+    <div class="taskbar-divider"></div>
+    <div class="taskbar-windows">
+      <button class="win95-btn taskbar-item active">BertenX.exe</button>
+      <button class="win95-btn taskbar-item">About_Me.txt</button>
+      <button class="win95-btn taskbar-item">C:\Projects</button>
+      <button class="win95-btn taskbar-item">Mail_Client</button>
+    </div>
+    <div class="taskbar-time">12:00 PM</div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

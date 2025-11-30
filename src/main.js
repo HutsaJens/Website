@@ -1,187 +1,132 @@
-// Navigation functionality
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".nav-menu");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  // Mobile menu toggle
-  hamburger.addEventListener("click", function () {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-  });
-
-  // Close mobile menu when clicking on a link
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
-    });
-  });
-
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
-
-  // Navbar background on scroll
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    if (window.scrollY > 50) {
-      navbar.style.background = "rgba(20, 69, 47, 0.98)";
-    } else {
-      navbar.style.background = "rgba(20, 69, 47, 0.95)";
-    }
-  });
-
-  // Add scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-      }
-    });
-  }, observerOptions);
-
-  // Observe elements for animation
-  document
-    .querySelectorAll(".project-card, .about-content, .contact-content")
-    .forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(30px)";
-      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-      observer.observe(el);
-    });
-
-  // Typing effect for hero subtitle
-  const subtitle = document.querySelector(".hero-subtitle");
-  const text = subtitle.textContent;
-  subtitle.textContent = "";
-
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      subtitle.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
+  // --- Clock Functionality ---
+  function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const strTime = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+    const timeDisplay = document.querySelector('.taskbar-time');
+    if (timeDisplay) {
+      timeDisplay.textContent = strTime;
     }
   }
+  setInterval(updateClock, 1000);
+  updateClock();
 
-  setTimeout(typeWriter, 1000);
+  // --- Window Dragging & Z-Index ---
+  const windows = document.querySelectorAll('.win95-window');
+  let highestZ = 100;
 
-  // Parallax effect for hero section
-  window.addEventListener("scroll", function () {
-    const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector(".hero-content");
-    if (heroContent) {
-      heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+  windows.forEach(win => {
+    const titleBar = win.querySelector('.window-title-bar');
+    
+    // Bring to front on click
+    win.addEventListener('mousedown', () => {
+      highestZ++;
+      win.style.zIndex = highestZ;
+      updateTaskbarActiveState(win);
+    });
+
+    // Dragging Logic
+    if (titleBar) {
+      let isDragging = false;
+      let startX, startY, initialLeft, initialTop;
+
+      titleBar.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        const rect = win.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+        
+        // Prevent text selection during drag
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        
+        win.style.left = `${initialLeft + dx}px`;
+        win.style.top = `${initialTop + dy}px`;
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+    }
+
+    // Close Button Logic
+    const closeBtn = win.querySelector('.title-btn'); // Assuming X is the first/only btn
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent bring-to-front if unnecessary
+        win.style.display = 'none';
+      });
     }
   });
 
-  // Add hover effect to skill tags
-  document.querySelectorAll(".skill-tag").forEach((tag) => {
-    tag.addEventListener("mouseenter", function () {
-      this.style.transform = "translateY(-2px) scale(1.05)";
+  // --- Taskbar Interaction ---
+  const taskbarItems = document.querySelectorAll('.taskbar-item');
+  
+  function updateTaskbarActiveState(activeWindow) {
+    // Reset all
+    taskbarItems.forEach(item => item.classList.remove('active'));
+    
+    // Find corresponding taskbar item (simple matching by text for now)
+    const winTitle = activeWindow.querySelector('.title-text').textContent;
+    taskbarItems.forEach(item => {
+      if (item.textContent === winTitle) {
+        item.classList.add('active');
+      }
     });
+  }
 
-    tag.addEventListener("mouseleave", function () {
-      this.style.transform = "translateY(0) scale(1)";
+  taskbarItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const winTitle = item.textContent;
+      // Find window by title
+      let targetWin = null;
+      windows.forEach(win => {
+        if (win.querySelector('.title-text').textContent === winTitle) {
+          targetWin = win;
+        }
+      });
+
+      if (targetWin) {
+        if (targetWin.style.display === 'none') {
+          targetWin.style.display = 'flex';
+          highestZ++;
+          targetWin.style.zIndex = highestZ;
+          updateTaskbarActiveState(targetWin);
+        } else {
+          // If already active and on top, minimize (hide)
+          // Check if it's the top window
+          if (parseInt(targetWin.style.zIndex) === highestZ) {
+            targetWin.style.display = 'none';
+            item.classList.remove('active');
+          } else {
+            // Bring to front
+            highestZ++;
+            targetWin.style.zIndex = highestZ;
+            updateTaskbarActiveState(targetWin);
+          }
+        }
+      }
     });
   });
 
-  // Project cards animation on hover
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("mouseenter", function () {
-      this.style.transform = "translateY(-15px) scale(1.02)";
-    });
-
-    card.addEventListener("mouseleave", function () {
-      this.style.transform = "translateY(0) scale(1)";
-    });
+  // --- Start Button ---
+  const startBtn = document.querySelector('.start-btn');
+  startBtn.addEventListener('click', () => {
+    startBtn.classList.toggle('active');
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
   });
 });
-
-// Eduward Easter Egg functionality
-let eduwardSequence = [];
-const eduwardCode = ["e", "d", "u", "w", "a", "r", "d"];
-
-document.addEventListener("keydown", function (e) {
-  eduwardSequence.push(e.key.toLowerCase());
-
-  // Keep only the last 7 characters
-  if (eduwardSequence.length > 7) {
-    eduwardSequence.shift();
-  }
-
-  // Check if the sequence matches "eduward"
-  if (eduwardSequence.join("") === eduwardCode.join("")) {
-    showEduwardEasterEgg();
-    eduwardSequence = []; // Reset sequence
-  }
-});
-
-function showEduwardEasterEgg() {
-  const easterEgg = document.getElementById("eduward-easter-egg");
-  const closeButton = document.querySelector(".eduward-close");
-  const backdrop = document.querySelector(".eduward-backdrop");
-
-  if (easterEgg) {
-    easterEgg.style.display = "flex";
-
-    // Close easter egg when clicking close button
-    closeButton.addEventListener("click", function () {
-      easterEgg.style.display = "none";
-    });
-
-    // Close easter egg when clicking backdrop
-    backdrop.addEventListener("click", function () {
-      easterEgg.style.display = "none";
-    });
-
-    // Close easter egg with Escape key
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && easterEgg.style.display === "flex") {
-        easterEgg.style.display = "none";
-      }
-    });
-  }
-}
-
-// Add some interactive particles effect to hero section
-function createParticles() {
-  const hero = document.querySelector(".hero");
-  if (!hero) return;
-
-  for (let i = 0; i < 50; i++) {
-    const particle = document.createElement("div");
-    particle.style.position = "absolute";
-    particle.style.width = "2px";
-    particle.style.height = "2px";
-    particle.style.background = "rgba(127, 176, 105, 0.3)";
-    particle.style.borderRadius = "50%";
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.top = Math.random() * 100 + "%";
-    particle.style.animation = `float ${
-      3 + Math.random() * 4
-    }s ease-in-out infinite`;
-    particle.style.animationDelay = Math.random() * 2 + "s";
-    hero.appendChild(particle);
-  }
-}
-
-// Initialize particles after page load
-window.addEventListener("load", createParticles);

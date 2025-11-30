@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snake Game</title>
-    <link rel="stylesheet" href="/src/snake.css" />
-  </head>
-  <body>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <div id="score">Score: 0</div>
-    <script type="module" src="/src/snake.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <div class="desktop">
+    <div class="win95-window" style="position: relative; margin: 50px auto; width: fit-content;">
+      <div class="window-title-bar">
+        <div class="title-text">Snake_Game.exe</div>
+        <div class="title-controls">
+          <a href="index.html" class="win95-btn title-btn" style="text-decoration: none; color: black;">X</a>
+        </div>
+      </div>
+      <div class="window-content" style="text-align: center;">
+        <canvas id="gameCanvas" width="400" height="400" style="border: 2px solid var(--border-gray);"></canvas>
+        <div id="score" style="font-family: var(--font-header); font-size: 1.5rem; margin-top: 10px;">Score: 0</div>
+        <a href="index.html" class="win95-btn"
+          style="margin-top: 10px; display: inline-block; text-decoration: none;">Exit Game</a>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/snake.js"></script>
+</body>
+
 </html>
