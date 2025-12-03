@@ -1,0 +1,391 @@
+/* Reset and Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  /* Windows 95 Palette */
+  --bg-color: #008080;       /* Teal */
+  --window-bg: #c0c0c0;      /* Silver */
+  --text-color: #000000;     /* Black */
+  --title-bar-bg: #000080;   /* Navy Blue */
+  --title-bar-text: #ffffff; /* White */
+  --border-light: #ffffff;
+  --border-dark: #000000;    /* Sharp contrast */
+  --border-gray: #808080;    /* Shadow */
+  
+  /* Fonts */
+  --font-header: 'VT323', monospace;
+  --font-body: 'Arial', sans-serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  /* Scanline effect overlay */
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Reusable Windows 95 Box Class */
+.win95-box {
+  background-color: var(--window-bg);
+  box-shadow: 
+    inset 1px 1px var(--border-light), 
+    inset -1px -1px var(--border-dark),
+    1px 1px 0px var(--border-dark); /* Outer border */
+  border: 2px solid var(--window-bg); /* Spacing for bevel */
+}
+
+.win95-btn {
+  background-color: var(--window-bg);
+  border: none;
+  box-shadow: 
+    inset 1px 1px var(--border-light), 
+    inset -1px -1px var(--border-dark),
+    inset -2px -2px var(--border-gray);
+  color: var(--text-color);
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.win95-btn:active {
+  box-shadow: 
+    inset 1px 1px var(--border-dark), 
+    inset -1px -1px var(--border-light);
+  transform: translateY(1px);
+}
+
+/* Desktop Layout */
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 40px); /* Minus taskbar height */
+  overflow: hidden; /* Hide overflow for "desktop" feel */
+  padding: 20px;
+}
+
+/* Windows 95 Window */
+.win95-window {
+  position: absolute;
+  background: var(--window-bg);
+  box-shadow: 
+    inset 1px 1px var(--border-light), 
+    inset -1px -1px var(--border-dark),
+    1px 1px 0px var(--border-dark);
+  border: 2px solid var(--window-bg);
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.window-title-bar {
+  background: var(--title-bar-bg);
+  color: var(--title-bar-text);
+  padding: 3px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-header);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: move; /* visual cue for dragging */
+  user-select: none; /* prevent text selection while dragging */
+}
+
+.title-text {
+  font-weight: bold;
+}
+
+.title-controls {
+  display: flex;
+}
+
+.title-btn {
+  font-size: 0.8rem;
+  padding: 0px 5px;
+  min-width: 20px;
+  height: 20px;
+  line-height: 16px;
+  font-weight: bold;
+}
+
+.window-content {
+  padding: 15px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+/* Hero Window Specifics */
+.hero-window {
+  width: 500px;
+  text-align: center;
+}
+
+.hero-logo {
+  height: 80px;
+  margin-bottom: 1rem;
+  /* Pixelate filter for retro vibe */
+  image-rendering: pixelated; 
+}
+
+.hero-title {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  margin-bottom: 1.5rem;
+  color: #404040;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* About Window Specifics */
+.about-window {
+  width: 400px;
+}
+
+.skills h3 {
+  font-family: var(--font-header);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: #fff;
+  border: 1px solid var(--border-dark);
+  padding: 2px 5px;
+  box-shadow: 2px 2px 0px var(--border-gray);
+}
+
+/* Projects Window Specifics */
+.projects-window {
+  width: 450px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  cursor: pointer;
+  position: relative;
+}
+
+.project-item:hover .project-icon {
+  filter: brightness(0.8);
+}
+
+.project-item:hover .project-name {
+  background: var(--title-bar-bg);
+  color: var(--title-bar-text);
+  outline: 1px dotted var(--title-bar-text);
+}
+
+.project-icon {
+  margin-bottom: 5px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-icon img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.project-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  padding: 2px;
+  word-break: break-word;
+}
+
+.project-link-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact Window Specifics */
+.contact-window {
+  width: 350px;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.social-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* Taskbar */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: var(--window-bg);
+  border-top: 2px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  z-index: 10000;
+  box-shadow: inset 0 1px 0 var(--border-light);
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 5px;
+  padding: 2px 5px;
+  height: 32px;
+}
+
+.taskbar-divider {
+  width: 2px;
+  height: 28px;
+  background: var(--border-gray);
+  border-right: 1px solid var(--border-light);
+  margin: 0 5px;
+}
+
+.taskbar-windows {
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  overflow-x: auto;
+}
+
+.taskbar-item {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  height: 32px;
+  min-width: 120px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.taskbar-item.active {
+  background: #e0e0e0; /* Dithered look simulation */
+  box-shadow: 
+    inset 1px 1px var(--border-dark), 
+    inset -1px -1px var(--border-light);
+}
+
+.taskbar-time {
+  background: var(--window-bg);
+  border: 2px solid;
+  border-color: var(--border-gray) var(--border-light) var(--border-light) var(--border-gray);
+  padding: 2px 10px;
+  margin-left: 5px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background: rgba(20, 69, 47, 0.98);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 2rem 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+  }
+}

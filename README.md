@@ -11,21 +11,24 @@ A modern, responsive portfolio website showcasing the work and skills of BertenX
 - **Contact Integration**: Social media links and email contact
 - **Easter Egg**: Hidden Eduward feature for visitors to discover
 - **Modern Animations**: Smooth transitions and hover effects
+- **Optimized Build**: Single-file HTML output with inlined assets for maximum performance
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Build Tool**: Vite
+- **Frontend**: HTML5, CSS3, JavaScript (ES Modules)
 - **Icons**: Font Awesome 6.0
-- **Analytics**: Rybbit.io integration
 - **Styling**: Modern CSS with custom animations and responsive design
+- **Optimization**: vite-plugin-singlefile for single-file builds
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-No build tools or dependencies required! This is a simple static website.
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [pnpm](https://pnpm.io/) (recommended package manager)
 
-### Local Development
+### Installation
 
 1. Clone the repository:
    ```bash
@@ -33,47 +36,59 @@ No build tools or dependencies required! This is a simple static website.
    cd Website
    ```
 
-2. Open the website:
-   - Option 1: Simply open `index.html` in your web browser
-   - Option 2: Use a local server (recommended):
-     ```bash
-     # Using Python
-     python -m http.server 8000
-     
-     # Using Node.js
-     npx serve .
-     
-     # Using PHP
-     php -S localhost:8000
-     ```
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
 
-3. Navigate to `http://localhost:8000` (if using a local server)
+### Local Development
 
-### Deployment
+Start the development server:
+```bash
+pnpm run dev
+```
 
-This website can be deployed to any static hosting service:
+The site will be available at `http://localhost:3000`
 
-- **GitHub Pages**: Already configured for GitHub Pages deployment
-- **Netlify**: Drag and drop the project folder
-- **Vercel**: Connect your GitHub repository
-- **Traditional Web Hosting**: Upload all files to your web server
+### Building for Production
+
+Build the optimized production files:
+```bash
+pnpm run build
+```
+
+This will generate:
+- `dist/index.html` - Main portfolio page (single-file with all assets inlined)
+- `dist/snake.html` - Snake game page (single-file with all assets inlined)
+
+### Preview Production Build
+
+Preview the production build locally:
+```bash
+pnpm run preview
+```
 
 ## 📁 Project Structure
 
 ```
 Website/
-├── index.html          # Main portfolio page
-├── snake.html          # Snake game page
-├── styles.css          # Main stylesheet
-├── snake.css           # Snake game styles
-├── script.js           # Main JavaScript functionality
-├── snake.js            # Snake game logic
-├── robots.txt          # Search engine directives
-├── assets/             # Images and logos
+├── index.html              # Main portfolio page
+├── snake.html              # Snake game page
+├── src/                    # Source files
+│   ├── main.js            # Main JavaScript functionality
+│   ├── style.css          # Main stylesheet
+│   ├── snake.js           # Snake game logic
+│   └── snake.css          # Snake game styles
+├── assets/                 # Images and logos
 │   ├── logo_transparant-wit.svg
+│   ├── logo_transparant-groen.svg
 │   ├── eduward.png
 │   └── ...
-└── README.md           # This file
+├── vite.config.js          # Vite configuration (main site)
+├── vite.config.snake.js    # Vite configuration (snake game)
+├── package.json            # Project dependencies and scripts
+├── robots.txt              # Search engine directives
+└── README.md               # This file
 ```
 
 ## 🎮 Features Overview
@@ -88,7 +103,7 @@ Website/
 - Classic snake gameplay with HTML5 Canvas
 - Score tracking
 - Smooth controls and animations
-- Accessible via navigation or direct link
+- Accessible via navigation or direct link at `/snake.html`
 
 ### Skills Highlighted
 - TypeScript
@@ -109,24 +124,23 @@ The website contains hidden features for visitors to discover:
 - **Email**: contact@bertenx.nl
 - **Social Media**: Links available on the website
 
-## 🤝 Contributing
-
-While this is a personal portfolio, suggestions and improvements are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -am 'Add some improvement'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
-
 ## 📄 License
 
 This project is personal portfolio content. Please respect the intellectual property and contact the owner for any usage inquiries.
 
 ## 🏗️ Development Notes
 
-- No build process required - pure HTML/CSS/JavaScript
-- All assets are optimized for web delivery
+### Build Process
+- Uses Vite for fast development and optimized production builds
+- Separate build configurations for main site and snake game due to vite-plugin-singlefile MPA limitations
+- All assets are inlined in production builds for single-file deployment
+- Development server runs on port 3000 to avoid service worker conflicts
+
+### Optimizations
+- Single-file HTML output with inlined CSS and JavaScript
+- Asset inlining (images, fonts) for zero additional HTTP requests
+- Console and debugger statements stripped in production
+- CSS code-splitting disabled for single-file output
 - Cross-browser compatible
 - Mobile-first responsive design
 - Accessibility considerations implemented
