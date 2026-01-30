@@ -137,8 +137,7 @@ body {
 .hero-logo {
   height: 150px;
   margin-bottom: 2rem;
-  filter: invert(1) brightness(1.2)
-    drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  filter: invert(1) brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
   animation: float 6s ease-in-out infinite;
 }
 
@@ -412,6 +411,16 @@ section {
   font-size: 0.9rem;
 }
 
+.footer a {
+  color: #969393;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #7fb069;
+}
+
 /* Eduward Easter Egg */
 .eduward-container {
   position: fixed;
@@ -513,6 +522,49 @@ section {
   background: #f0f0f0;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Privacy Policy */
+.privacy-section {
+  padding-top: 120px;
+  min-height: 100vh;
+  color: #b3b8b4;
+  background: #0a1f15;
+}
+
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.privacy-content h2 {
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.privacy-content p,
+.privacy-content ul {
+  margin-bottom: 20px;
+}
+
+.privacy-content ul {
+  padding-left: 20px;
+}
+
+.privacy-content strong {
+  color: #fff;
+}
+
+.privacy-content a {
+  color: #7fb069;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.privacy-content a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive Design */
